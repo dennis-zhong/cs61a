@@ -1,0 +1,143 @@
+Text File questions
+
+
+
+Problem 01: Sample Paragraphs
+
+
+
+- Which functions from utils.py will you use for interacting with the sample_paragraphs.txt file?
+strip(): to get rid of any new lines or spaces in each line
+readline(): to return each line of the text to print onto gui
+split(): to count the number of words in text
+readable(): to check that the text that is inputted is readable
+
+Problem 02: Words Per Minute
+
+
+
+- Given a long string that contains a full paragraph (e.g. "This is my name. It is Bob. Also, I have a cat named Troy."), what function will you use to separate a string containing a full paragraph into its individual words?
+split()
+
+
+
+
+- What is the calculation you will use in order to measure Words Per Minute speed? (You can describe your formula.)
+get the len() of the string that the user needs to type then dividing it by 5 to get the amount of words
+then dividing the result by (endtime-starttime)
+
+
+
+
+- What is the calculation you will use in order to measure accuracy? (You can describe your formula.)
+use a for loop to loop through each word in the list of words in the 
+text string or the list of words in the user inputted string depending
+on which one is smaller then in the loop compare the word from the text 
+to the corresponding word inputted by the user and if they're equal then
+add one to a counter for correct. At the end of the loop divide the 
+correct counter by the len of the list of words in the text string
+
+
+Problem 03: Pig Latin
+
+
+
+- How will you identify that a word starts with a consonant cluster? 
+loop through a string of vowels and compare it to the word until the 
+loop finds a vowel
+
+
+
+Problem 04: Autocorrect Skeleton
+
+
+
+- How will you calculate the difference scores between the user input string and each valid word, and determine which difference is the smallest?
+declare a min variable that is an empty string and a min score that is
+equal to difference between the first valid word and user input. use a 
+for loop to loop through the list of valid words and call the score 
+function and if the score is less than min score then replace min string
+and min score
+
+
+Problem 05: Score Function 
+
+
+
+- What will your base case be?
+if either word is an empty string return 0
+
+
+
+
+- Identify two example inputs which fall into different recursive calls. In each of these cases, what recursive call should be made?
+score_function('nice', 'rice') could call 1+score_function('ice', 'ice')
+score_function('range', 'rungs') could call 0+score_function('ange', 'ungs')
+
+
+
+
+Problem 06: 
+
+
+
+- What does each of the recursive calls in the skeleton represent? Are there additional cases which don't fit into the three already given?
+if word1==word2 return 0
+elif first letter of word1 == first letter of word2 return score_function(word1[1:], word2[1:])
+else add: word2[1:] remove: word1[1:] swap = word2[:1]+word1[1:] return 1+min(score_function())
+call score_function on add remove and swap compared to word2
+
+
+- If we called score_function("bot", "boot"), list a series of successive recursive calls we would go through to reach the base case. For example, if we called score_function("add", "aadd"), one step could be score_function("add", "aadd") -> score_function("add", "add").
+score_function("bot", "boot")->score_function("bot", "bot")
+
+
+
+
+- Based on your above list of recursive calls, classify each step as an add, remove, a swap, or something else.
+first step: remove
+
+
+
+
+- Why would your function choose this sequence of recursive calls over another?
+because it takes the least amount of steps
+
+Problem 07: Accuracy
+
+
+
+- In your own words, why do we need to improve the accuracy of our existing score_function? In other words, what is the problem that we are trying to solve?
+our current score_function weights each letter equally meaning many words in the words.txt can have the
+same score so we need more accuracy
+
+
+
+
+- How can you adapt your score function from the previous problem to take into account key distances?
+ (Hint: which recursive call will need to be modified?)
+the add remove and swap call will need to be modified so instead of 
+adding one they add a certain integer based on the letter
+
+
+
+
+Problem 08: Efficiency
+
+
+
+- What data structure will you use to store all of the differences that score_function has already calculated?
+dictionary
+
+
+
+
+- What types of values will this data structure contain?
+strings and ints
+
+
+
+
+- Using the data structure you described, given a pair of words, how will you check whether score_function has already been called on that pair of words? If so, how will you access the already calculated difference?
+can use an if statement to check if the pair of words is in the 
+dictionary then you can access the value by calling d[word1][word2]
