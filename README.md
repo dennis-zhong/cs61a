@@ -1,2 +1,2 @@
-# cs61a-su19
+# CS61A: Structure and Interpretation of Computer Programs
 
